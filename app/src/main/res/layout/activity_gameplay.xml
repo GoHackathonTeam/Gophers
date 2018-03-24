@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameplayLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.gohackathon.gophers.GameplayActivity">
+
+    <TextView
+        android:id="@+id/playScoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/playScoreText"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.15" />
+
+    <TextView
+        android:id="@+id/playScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="0"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/playScoreText"
+        app:layout_constraintTop_toTopOf="@id/playScoreText" />
+
+    <ImageView
+        android:id="@+id/hole1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hole"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/hole2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <ImageView
+        android:id="@+id/hole2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hole"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/hole3"
+        app:layout_constraintStart_toEndOf="@+id/hole1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <ImageView
+        android:id="@+id/hole3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hole"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hole2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <ImageView
+        android:id="@+id/hole4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hole"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/hole5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hole1"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <ImageView
+        android:id="@+id/hole5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hole"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hole4"
+        app:layout_constraintTop_toBottomOf="@id/hole1"
+        app:layout_constraintVertical_bias="0.3" />
+
+
+    <ImageView
+        android:id="@+id/gopher1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onGopherClick"
+        app:layout_constraintBottom_toBottomOf="@+id/hole1"
+        app:layout_constraintEnd_toEndOf="@+id/hole1"
+        app:layout_constraintStart_toStartOf="@+id/hole1"
+        app:srcCompat="@drawable/nice_gopher" />
+
+    <ImageView
+        android:id="@+id/gopher2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onGopherClick"
+        app:layout_constraintBottom_toBottomOf="@+id/hole5"
+        app:layout_constraintEnd_toEndOf="@+id/hole5"
+        app:layout_constraintStart_toStartOf="@+id/hole5"
+        app:srcCompat="@drawable/nice_gopher" />
+
+    <ImageView
+        android:id="@+id/gopher3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onGopherClick"
+        app:layout_constraintBottom_toBottomOf="@+id/hole4"
+        app:layout_constraintEnd_toEndOf="@+id/hole4"
+        app:layout_constraintStart_toStartOf="@+id/hole4"
+        app:srcCompat="@drawable/nice_gopher" />
+
+</android.support.constraint.ConstraintLayout>
+
