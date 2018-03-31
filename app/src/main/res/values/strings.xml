@@ -5,6 +5,7 @@
     <string name="playButton">ИГРАТЬ</string>
     <string name="settingsButton">НАСТРОЙКИ</string>
 
+    <string name="livesText">Кажется, это жизни:</string>
     <string name="playScoreText">Сусликов наказано:</string>
     <string name="title_activity_settings">Settings</string>
 
@@ -80,5 +81,7 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="settingsText">Хочу лупить сусликов быстрее (медленнее):</string>
+    <string name="gameOver">ИГРА ОКОНЧЕНА</string>
+    <string name="backToMenu">Уберите меня отсюда</string>
 
 </resources>

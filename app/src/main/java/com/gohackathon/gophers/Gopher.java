@@ -1,89 +1,59 @@
 package com.gohackathon.gophers;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.view.View;
-import android.widget.ImageView;
-
-import static com.gohackathon.gophers.SettingsActivity.APP_PREFERENCES;
-import static com.gohackathon.gophers.SettingsActivity.APP_PREFERENCES_SPEED;
-
 public class Gopher {
-    private SharedPreferences settings;
+    private int lifeTime;
+    private final int maxLifeTime;
+    private boolean isAlive;
+    private final int id;
+    private final int line;
+    private int holeId = 0;
 
+    public Gopher(int id, int line, int maxLifeTime) {
+        this.id = id;
+        this.line = line;
+        this.maxLifeTime = maxLifeTime;
+        lifeTime = maxLifeTime;
+        isAlive = true;
+    }
 
-    private ImageView imageView;
-    private int id;
-    private boolean isVisible;
-    private View hole;
-    private int maxLifeTime = 4;
-    private int liveTime = 4;
+    public void setHole(int holeId) {
+        this.holeId = holeId;
+    }
 
-    public Gopher(Activity activity, int imageViewId, boolean isVisible, View hole) {
-        this.id = imageViewId;
-        this.imageView = activity.findViewById(imageViewId);
-        this.isVisible = isVisible;
-        this.hole = hole;
+    public int getHole() {
+        return holeId;
+    }
 
-        settings = activity.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        switch (settings.getInt(APP_PREFERENCES_SPEED, 0)) {
-            case 0:
-                maxLifeTime = 7;
-                break;
-            case 1:
-                maxLifeTime = 5;
-                break;
-            case 2:
-                maxLifeTime = 4;
-                break;
-            case 3:
-                maxLifeTime = 2;
-                break;
-        }
+    public int getLifeTime() {
+        return lifeTime;
+    }
+
+    public void decrLifeTime() {
+        lifeTime --;
+    }
+
+    public void resetTime() {
+        lifeTime = maxLifeTime;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void kill() {
+        isAlive = false;
+    }
+
+    public void setAlive() {
+        isAlive = true;
+        resetTime();
     }
 
     public int getId() {
         return id;
     }
 
-    public ImageView getImageView() {
-        return imageView;
-    }
-
-    public boolean isVisible() {
-        return isVisible;
-    }
-
-    public void setVisible(boolean visible) {
-        isVisible = visible;
-    }
-
-    public int getWidth() {
-        return imageView.getWidth();
-    }
-
-    public int getHeight() {
-        return imageView.getHeight();
-    }
-
-    public View getHole() {
-        return hole;
-    }
-
-    public void setHole(View hole) {
-        this.hole = hole;
-    }
-
-    public int getLiveTime() {
-        return liveTime;
-    }
-
-    public void decrLifeTime() {
-        liveTime--;
-    }
-
-    public void resetTime() {
-        liveTime = maxLifeTime;
+    public int getLine() {
+        return line;
     }
 }

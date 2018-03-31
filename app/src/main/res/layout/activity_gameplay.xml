@@ -9,6 +9,23 @@
     tools:context="com.gohackathon.gophers.GameplayActivity">
 
     <TextView
+        android:id="@+id/livesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/livesText"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
         android:id="@+id/playScoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,10 +37,12 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.15" />
+        app:layout_constraintTop_toBottomOf="@id/livesText"
+        app:layout_constraintVertical_bias="0.02" />
+
+
 
     <TextView
         android:id="@+id/playScore"
@@ -111,9 +130,9 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="onGopherClick"
-        app:layout_constraintBottom_toBottomOf="@+id/hole5"
-        app:layout_constraintEnd_toEndOf="@+id/hole5"
-        app:layout_constraintStart_toStartOf="@+id/hole5"
+        app:layout_constraintBottom_toBottomOf="@+id/hole3"
+        app:layout_constraintEnd_toEndOf="@+id/hole3"
+        app:layout_constraintStart_toStartOf="@+id/hole3"
         app:srcCompat="@drawable/nice_gopher" />
 
     <ImageView
@@ -127,6 +146,34 @@
         app:layout_constraintEnd_toEndOf="@+id/hole4"
         app:layout_constraintStart_toStartOf="@+id/hole4"
         app:srcCompat="@drawable/nice_gopher" />
+
+    <ImageView
+        android:id="@+id/life1"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/livesText"
+        app:layout_constraintStart_toEndOf="@id/livesText"
+        app:layout_constraintTop_toTopOf="@id/livesText"
+        app:srcCompat="@android:drawable/ic_notification_overlay"/>
+    <ImageView
+        android:id="@+id/life2"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/livesText"
+        app:layout_constraintStart_toEndOf="@id/life1"
+        app:layout_constraintTop_toTopOf="@id/livesText"
+        app:srcCompat="@android:drawable/ic_notification_overlay"/>
+    <ImageView
+        android:id="@+id/life3"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/livesText"
+        app:layout_constraintStart_toEndOf="@id/life2"
+        app:layout_constraintTop_toTopOf="@id/livesText"
+        app:srcCompat="@android:drawable/ic_notification_overlay"/>
 
 </android.support.constraint.ConstraintLayout>
 
