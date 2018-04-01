@@ -5,7 +5,7 @@ There is a lot to implement, but you can already play it. Enjoy! (or not)
 <br>
 Next time:
 + Better graphics (hope so)
-+ Ability to lose the game
++ Animation
 + Scoreboard
 + ...
 <br>
