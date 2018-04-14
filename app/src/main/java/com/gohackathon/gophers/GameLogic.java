@@ -13,31 +13,15 @@ public class GameLogic {
     private int score;
     private int lives = 3;
     private final Random random;
+    private boolean gopherMissed = false;
 
     /**
      * @param gophers takes a gopher's ID and his line (1-top, 2-bottom)
      */
 
-    public GameLogic(int speed, List<Pair<Integer, Integer>> gophers,
+    public GameLogic(boolean difficultyHard, List<Pair<Integer, Integer>> gophers,
                      List<Integer> freeTopHoles, List<Integer> freeBottomHoles) {
-        int maxLifeTime;
-        switch (speed) {
-            case 0:
-                maxLifeTime = 7;
-                break;
-            case 1:
-                maxLifeTime = 5;
-                break;
-            case 2:
-                maxLifeTime = 4;
-                break;
-            case 3:
-                maxLifeTime = 2;
-                break;
-            default:
-                maxLifeTime = 4;
-                break;
-        }
+        int maxLifeTime = difficultyHard? 2: 7;
 
         this.gophers = new ArrayList<>();
         for (int i = 0; i < gophers.size(); i++) {
@@ -84,12 +68,17 @@ public class GameLogic {
         return lives;
     }
 
+    public boolean isGopherMissed() {
+        return gopherMissed;
+    }
+
     public void gopherUpdate() {
+        gopherMissed = false;
         for (Gopher gopher: gophers) {
             gopher.decrLifeTime();
             if (gopher.getLifeTime() == 0 && gopher.isAlive()) {
-                score --;
                 lives --;
+                gopherMissed = true;
             }
 
             if (gopher.getLifeTime() <= 0) {

@@ -3,6 +3,8 @@ package com.gohackathon.gophers;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,14 +17,13 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.gohackathon.gophers.SettingsActivity.APP_PREFERENCES;
-import static com.gohackathon.gophers.SettingsActivity.APP_PREFERENCES_SPEED;
-
 public class GameplayActivity extends AppCompatActivity {
     private final int GOPHERS_UPDATE_PERIOD = 500;
     private GameLogic game;
     private SharedPreferences settings;
     private Timer timer;
+    private Vibrator vibrator;
+    private boolean vibrate;
 
     private TextView scoreText;
     private View life1;
@@ -45,10 +46,13 @@ public class GameplayActivity extends AppCompatActivity {
         life2 = findViewById(R.id.life2);
         life3 = findViewById(R.id.life3);
 
-        settings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        int speed = settings.getInt(APP_PREFERENCES_SPEED, 0);
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean difficultyHard = settings.getBoolean("difficulty", false);
+        vibrate = settings.getBoolean("vibrate", true);
 
-        game = new GameLogic(speed, getGophers(),
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        game = new GameLogic(difficultyHard, getGophers(),
                 getInitialFreeTopHoles(), getInitialFreeBottomHoles());
         game.setGophersHoles(getInitialGopherHolesIds());
 
@@ -84,8 +88,13 @@ public class GameplayActivity extends AppCompatActivity {
     private void update() {
         if (game.getLives() < 1) {
             timer.cancel();
+            settings.edit().putString("lastScore", game.getScore()).apply();
             Intent intent = new Intent(GameplayActivity.this, GameOverActivity.class);
             startActivity(intent);
+        }
+
+        if (vibrate && game.isGopherMissed()) {
+            vibrator.vibrate(300);
         }
     }
 

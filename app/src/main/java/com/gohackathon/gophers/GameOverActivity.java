@@ -1,12 +1,17 @@
 package com.gohackathon.gophers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class GameOverActivity extends AppCompatActivity {
+    private TextView lastScore;
+    private SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +21,10 @@ public class GameOverActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+
+        settings = PreferenceManager.getDefaultSharedPreferences(this);
+        lastScore = findViewById(R.id.gameOverScore);
+        lastScore.setText(settings.getString("lastScore", "0"));
     }
 
     @Override
